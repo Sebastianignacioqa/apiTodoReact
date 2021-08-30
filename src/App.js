@@ -2,10 +2,13 @@ import './App.css';
 import Todolist from './componentes/todolist';
 import React, {useEffect, useState} from 'react';
 import { body } from 'jquery';
+import Checkbox from './componentes/checkbox';
+import Tasks from "./componentes/tasks";
 
 function App() {
 
   const [tarea, setTarea]= useState([]);
+  
 
   useEffect(() => {
     cargarTarea();
@@ -25,17 +28,22 @@ function App() {
 
       console.log(body.map(t => t.label).join(", "))
       setTarea(body)
+      
     })
 
     .catch(error => console.log(error))
-
+    
   }
+  const fetchmapeo = tarea.map(t=> (<Checkbox key= {t.label} data={t}/>));
+  tarea.map (tarea=> <Tasks lista={tarea.label} setlista={setTarea.label}/>);
 
   return (
     <div className="App">
-      <h1>{tarea.map(t=>t.label).join(", ")}</h1>
+      
+      
       <h1>Lista de pendientes</h1>
       <Todolist /></div>
+      
   );
 }
 

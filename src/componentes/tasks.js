@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Checkbox from './checkbox';
+import Fetch from './fetch';
 
 const Tasks = (props) => {
     const { lista, setLista } = props; //lista y setlista son arrays que vienen desde todolist por cambios usando useState
@@ -23,6 +24,7 @@ const Tasks = (props) => {
         setLista(listaActual);
     };
     const mapeo = lista.map(item => (<Checkbox key={item.id} data={item} onChange={onChangeStatus} />));
+    
     
     return (<div className= "listadoTodo">
         {lista.length ? mapeo : <h5>No hay tareas</h5>}
